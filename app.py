@@ -17,24 +17,14 @@ data_file = st.file_uploader("📁 Upload Data File (.csv, .tsv, .xls)", type=['
 if meta_file and data_file:
     # === Load metadata ===
     try:
-        if meta_file.name.endswith('.tsv'):
-            meta_df = pd.read_csv(meta_file, sep='\t')
-        elif meta_file.name.endswith('.xls') or meta_file.name.endswith('.xlsx'):
-            meta_df = pd.read_excel(meta_file)
-        else:
-            meta_df = pd.read_csv(meta_file)
+         meta_df = pd.read_csv(meta_file, sep='\t')
     except Exception as e:
         st.error(f"❌ Failed to read metadata: {e}")
         st.stop()
 
     # === Load data file ===
     try:
-        if data_file.name.endswith('.tsv'):
-            data_df = pd.read_csv(data_file, sep='\t')
-        elif data_file.name.endswith('.xls') or data_file.name.endswith('.xlsx'):
-            data_df = pd.read_excel(data_file)
-        else:
-            data_df = pd.read_csv(data_file)
+        data_df = pd.read_csv(data_file, sep='\t')
     except Exception as e:
         st.error(f"❌ Failed to read data file: {e}")
         st.stop()
