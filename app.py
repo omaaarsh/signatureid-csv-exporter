@@ -34,7 +34,7 @@ if meta_file and data_file:
     required_meta_cols = {"SignatureId", "Perturbagen", "Tissue", "CellLine"}
     result = filtered_metaDate[["SignatureId", "Perturbagen","Tissue", "CellLine"]]
     perturbagen = result['Perturbagen'].iloc[0]
-    if not required_meta_cols.issubset(meta_df.columns):
+    if not required_meta_cols.issubset(filtered_metaDate.columns):
         st.error(f"❌ Metadata file must contain columns: {required_meta_cols}")
         st.stop()
 
