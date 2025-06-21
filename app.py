@@ -3,7 +3,7 @@ import pandas as pd
 import os
 import io
 
-st.title("🔬 SignatureId Matcher & CSV Exporter")
+st.title("🔬 SignatureId Matcher & CSV Exporter🧑‍💻")
 
 st.write("""
 Upload your metadata file and data file.  
