@@ -50,7 +50,7 @@ if meta_file and data_file:
     zip_buffer = BytesIO()
 
     with ZipFile(zip_buffer, "a") as zipf:
-        for _, row in meta_df.iterrows():
+        for _, row in filtered_meta_df.iterrows():
             sig_id = str(row['SignatureId']).strip()
             perturbagen = str(row['Perturbagen']).strip().replace(" ", "_")
             tissue = str(row['Tissue']).strip().replace(" ", "_")
