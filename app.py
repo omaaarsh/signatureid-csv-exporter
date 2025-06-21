@@ -58,7 +58,7 @@ if meta_file and data_file:
             if matched.empty:
                 continue
 
-            filename = f"{perturbagen} {tissue} {cellLine} - {perturbagen} {tissue} {cellLine}.csv"
+            filename = f"{perturbagen} {tissue} {cell_line} - {perturbagen} {tissue} {cell_line}.csv"
             csv_bytes = matched.to_csv(index=False).encode('utf-8')
             zipf.writestr(filename, csv_bytes)
 
