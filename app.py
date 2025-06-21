@@ -28,9 +28,11 @@ if meta_file and data_file:
     except Exception as e:
         st.error(f"❌ Failed to read data file: {e}")
         st.stop()
-
+        
     # === Validate columns ===
     required_meta_cols = {"SignatureId", "Perturbagen", "Tissue", "CellLine"}
+    result = meta_df[["SignatureId", "Perturbagen","Tissue", "CellLine"]]
+    perturbagen = result['Perturbagen'].iloc[0]
     if not required_meta_cols.issubset(meta_df.columns):
         st.error(f"❌ Metadata file must contain columns: {required_meta_cols}")
         st.stop()
@@ -68,6 +70,6 @@ if meta_file and data_file:
     st.download_button(
         label="⬇️ Download All Results (ZIP)",
         data=zip_buffer.getvalue(),
-        file_name="Matched_Results.zip",
+        file_name=f"\{perturbagen}_Results.zip",
         mime="application/zip"
     )
