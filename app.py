@@ -1,9 +1,9 @@
+import io
 import streamlit as st
 import pandas as pd
 import numpy as np
 import os
 import tempfile
-import zipfile
 import seaborn as sns
 import matplotlib.pyplot as plt
 from functools import reduce
@@ -11,7 +11,6 @@ from scipy.cluster.hierarchy import linkage
 from scipy.spatial.distance import pdist
 import gseapy as gp
 from gseapy.plot import barplot
-import io
 
 # --- STREAMLIT CONFIG ---
 st.set_page_config(layout="wide")
