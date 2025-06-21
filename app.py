@@ -18,6 +18,7 @@ if meta_file and data_file:
     # === Load metadata ===
     try:
          meta_df = pd.read_csv(meta_file, sep='\t')
+         filtered_metaDate=meta_df.drop_duplicates(subset='Tissue', keep='first')
     except Exception as e:
         st.error(f"❌ Failed to read metadata: {e}")
         st.stop()
@@ -31,7 +32,7 @@ if meta_file and data_file:
         
     # === Validate columns ===
     required_meta_cols = {"SignatureId", "Perturbagen", "Tissue", "CellLine"}
-    result = meta_df[["SignatureId", "Perturbagen","Tissue", "CellLine"]]
+    result = filtered_metaDate[["SignatureId", "Perturbagen","Tissue", "CellLine"]]
     perturbagen = result['Perturbagen'].iloc[0]
     if not required_meta_cols.issubset(meta_df.columns):
         st.error(f"❌ Metadata file must contain columns: {required_meta_cols}")
